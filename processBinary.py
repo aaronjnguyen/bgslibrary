@@ -30,7 +30,7 @@ algorithms = []
 names = ['sfd', 'asd', 'am', 'gmm', 'zmm', 'ga', 'eig', 'mog', 'vm','mc', 'sd']
 ## bgslibrary algorithms
 algorithms.append(bgs.StaticFrameDifference()) #SFD
-algorithms.append(bgs.AdaptiveSelectiveBackgroundLearning() # ASD
+algorithms.append(bgs.AdaptiveSelectiveBackgroundLearning()) # ASD
 algorithms.append(bgs.DPAdaptiveMedian()) # AM
 algorithms.append(bgs.DPGrimsonGMM()) # GMM
 algorithms.append(bgs.DPZivkovicAGMM()) # ZMM
@@ -44,32 +44,26 @@ algorithms.append(bgs.SigmaDelta()) # SD
 # change based on which algorithm
 #img_folder = "sets/train_inputs"
 img_folder = "dataset2014/dataset/badWeather/wetSnow/input"
-
 print("Running ", algorithm.__class__)
 
 # change name based on which algorithm
-base_img_name = "sfd_"
-for filename in sorted(os.listdir(img_folder)):
 
-    # we can loop now through our array of images
-#    img_path = img_array[x]
+for i in range(len(names)):
+    alg = algorithms[i]
+    name = names[i]
+    dst_folder = "dataset2014/results/badWeather/wetSnow/" + name
 
-    # read file into open cv and apply to algorithm to generate background model
-    img = cv2.imread(os.path.join(img_folder,filename))
-    img_output = algorithm.apply(img)
-    # img_bgmodel = algorithm.getBackgroundModel()
+    for filename in sorted(os.listdir(img_folder)):
 
-    img_fg = "dataset2014/results/badWeather/wetSnow/sfd"
-    #img_fg = "sets/foreground/test/sfd"
+        img = cv2.imread(os.path.join(img_folder,filename))
 
-    file_num = filename[2:8]
+        img_output = alg.apply(img)
+
+        file_num = filename[2:8]
+        file_name = name + file_num + '.png'
     
-    file_name = base_img_name + file_num + '.png'
-    
-    # cv2.imwrite(os.path.join(img_bg, file_name), img_bgmodel)
-    cv2.imwrite(os.path.join(img_fg, file_name), img_output)
-    cv2.waitKey(0)
+        cv2.imwrite(os.path.join(img_fg, file_name), img_output)
+        cv2.waitKey(0)
 
-    #file_num += 1
 
 print("Finished")
