@@ -38,6 +38,7 @@ if is_cv2():
   algorithms.append(bgs.GMG()) # if opencv 2.x
 if is_cv3():
   algorithms.append(bgs.KNN()) # if opencv 3.x
+"""
 if is_cv2() or is_cv3():
   algorithms.append(bgs.DPAdaptiveMedian())
   algorithms.append(bgs.DPGrimsonGMM())
@@ -65,6 +66,8 @@ if is_cv2() or is_cv3():
   algorithms.append(bgs.KDE())
   algorithms.append(bgs.IndependentMultimodal())
   algorithms.append(bgs.MultiCue())
+"""
+
 algorithms.append(bgs.SigmaDelta())
 algorithms.append(bgs.SuBSENSE())
 algorithms.append(bgs.LOBSTER())
