@@ -43,15 +43,14 @@ algorithms.append(bgs.SigmaDelta()) # SD
 
 # change based on which algorithm
 #img_folder = "sets/train_inputs"
-img_folder = "dataset2014/dataset/badWeather/wetSnow/input"
-print("Running ", algorithm.__class__)
+img_folder = "dataset2014/dataset/turbulence/turbulence3/input"
 
 # change name based on which algorithm
 
 for i in range(len(names)):
     alg = algorithms[i]
     name = names[i]
-    dst_folder = "dataset2014/results/badWeather/wetSnow/" + name
+    dst_folder = "dataset2014/results/turbulence/turbulence3/" + name
 
     for filename in sorted(os.listdir(img_folder)):
 
@@ -62,7 +61,7 @@ for i in range(len(names)):
         file_num = filename[2:8]
         file_name = name + file_num + '.png'
     
-        cv2.imwrite(os.path.join(img_fg, file_name), img_output)
+        cv2.imwrite(os.path.join(dst_folder, file_name), img_output)
         cv2.waitKey(0)
 
 
