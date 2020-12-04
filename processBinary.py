@@ -24,12 +24,13 @@ algorithm = bgs.StaticFrameDifference() #SFD
 # algorithm = bgs.MultiCue() # MC
 # algorithm = bgs.SigmaDelta() # SD
 
-img_folder = "dataset2014/dataset/badWeather/wetSnow/input"
+# change based on which algorithm
+img_folder = "combined/train_inputs"
 
 print("Running ", algorithm.__class__)
 
-base_img_name = "bin"
-curr_file_num = '000001'
+# change name based on which algorithm
+base_img_name = "sfd_"
 
 for filename in os.listdir(img_folder):
 
@@ -39,17 +40,20 @@ for filename in os.listdir(img_folder):
     # read file into open cv and apply to algorithm to generate background model
     img = cv2.imread(os.path.join(img_folder,filename))
     img_output = algorithm.apply(img)
-    img_bgmodel = algorithm.getBackgroundModel()
+    # img_bgmodel = algorithm.getBackgroundModel()
 
-    img_bg = "dataset2014/results/badWeather/wetSnow/bg"
-    img_fg = "dataset2014/results/badWeather/wetSnow/fg"
+    # img_bg = "dataset2014/results/badWeather/wetSnow/bg"
+    img_fg = "combined/foreground/sfd"
 
-    file_name = base_img_name + curr_file_num + '.png'
+    filename_split = filename.split('_')
+    without_tag = filename_split[1].split('.')
+    file_num = without_tag[0]
+
+    file_name = base_img_name + file_num + '.png'
     
-    cv2.imwrite(os.path.join(img_bg, file_name), img_bgmodel)
+    # cv2.imwrite(os.path.join(img_bg, file_name), img_bgmodel)
     cv2.imwrite(os.path.join(img_fg, file_name), img_output)
     cv2.waitKey(0)
 
-    curr_file_num = str(int(curr_file_num) + 1)
 
 print("Finished")
