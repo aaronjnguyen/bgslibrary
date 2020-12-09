@@ -1,6 +1,7 @@
 import numpy as np
 import shutil
-# 17251
+
+# Used initially to split dataset.. not used in final dataset used
 
 algo_paths = ['am', 'asd', 'eig', 'ga', 'gmm', 'mc',
               'mog', 'sd', 'sfd', 'vm', 'zmm']

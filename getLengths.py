@@ -1,5 +1,7 @@
 import os
 
+# Used to debug file lengths
+
 paths = ['badminton', 'canoe', 'park', 'parking', 'pedestrians',
          'peopleInShade', 'tramCrossroad_1fps', 'turbulence3', 'wetSnow', 
          'winterStreet', 'zoomInZoomOut']

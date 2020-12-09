@@ -1,6 +1,8 @@
 import os
 import shutil
 
+# combined all separate algorithm foreground masks into one image
+
 paths = ['badminton', 'canoe', 'park', 'parking', 'pedestrians',
          'peopleInShade', 'tramCrossroad_1fps', 'turbulence3', 'wetSnow', 
          'winterStreet', 'zoomInZoomOut']

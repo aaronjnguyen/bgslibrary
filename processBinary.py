@@ -1,15 +1,11 @@
-##############################################
-# Demo file
-# python demo2.py --- will use video
-# python demo2.py image --- will use images
-#############################################
-
 import numpy as np
 import cv2
 import pybgs as bgs
 import sys
 import glob
 import os
+
+# Used to create foreground masks of each algorithsm we concatenated together
 
 print("OpenCV Version: {}".format(cv2.__version__))
 
@@ -42,15 +38,13 @@ algorithms.append(bgs.MultiCue()) # MC
 algorithms.append(bgs.SigmaDelta()) # SD
 
 # change based on which algorithm
-#img_folder = "sets/train_inputs"
-img_folder = "dataset2014/dataset/turbulence/turbulence3/input"
+img_folder = "dataset2014/dataset/turbulence3/input"
 
 # change name based on which algorithm
-
 for i in range(len(names)):
     alg = algorithms[i]
     name = names[i]
-    dst_folder = "dataset2014/results/turbulence/turbulence3/" + name
+    dst_folder = "dataset2014/results/turbulence3/" + name
 
     for filename in sorted(os.listdir(img_folder)):
 
